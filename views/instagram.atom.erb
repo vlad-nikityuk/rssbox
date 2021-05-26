@@ -14,7 +14,7 @@
 
   <entry>
     <id>instagram:post:<%= post["id"] %><%= ":#{params[:cachebuster]}" if params[:cachebuster] %></id>
-    <title><%= "[#{post["nodes"].length}] " if post["nodes"].length > 1 %><%= "Video: " if has_video %><%= post["text"]&.to_line&.esc || "No title" %></title>
+    <title><%= "[#{post["nodes"].length}] " if post["nodes"].length > 1 %><%= "Video: " if has_video %><%= post["text"]&.to_line[0..100]&.esc || "No title" %></title>
     <link href="https://www.instagram.com/p/<%= post["shortcode"] %>/" />
     <updated><%= Time.at(post["taken_at_timestamp"]) %></updated>
     <author><name><%= post["username"].esc %></name></author>
